@@ -1,0 +1,5 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS concessions_db;
+
+-- CREATE DATABASE
+CREATE DATABASE concessions_db;
