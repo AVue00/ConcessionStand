@@ -46,6 +46,7 @@ export function ProductFactory(sequelize: Sequelize): typeof Product{
         {
             tableName: 'products',
             timestamps:false,
+            underscored: true,
             sequelize
         }
     );

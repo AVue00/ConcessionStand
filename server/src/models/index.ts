@@ -24,7 +24,8 @@ const OrderProducts = sequelize.define('order_products', {
     quantity: DataTypes.INTEGER
     },
     {
-        timestamps:false
+        timestamps:false,
+        underscored: true
     }
 );
 

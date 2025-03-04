@@ -27,6 +27,7 @@ export function OrderFactory(sequelize: Sequelize): typeof Order {
             tableName: 'orders',
             sequelize,
             timestamps: false,
+            underscored: true
         }
     )
     return Order;
