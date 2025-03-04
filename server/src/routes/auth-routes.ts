@@ -38,6 +38,14 @@ export const createAccount = async (req: Request, res: Response) => {
   }
 };
 
+export const findUser = async (req: Request, res: Response) => {
+  const { username } = req.body
+
+  const user = await User.findOne({
+    where: {username},
+  });
+  return res.json(user?.dataValues.id);
+};
 
 const router = Router();
 
@@ -45,4 +53,6 @@ const router = Router();
 router.post('/login', login);
 
 router.post('/createUser', createAccount);
+
+router.post('/findUser', findUser)
 export default router;

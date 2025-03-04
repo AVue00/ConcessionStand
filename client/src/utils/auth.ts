@@ -19,16 +19,13 @@ class AuthService {
   }
 
   getToken(): string {
-
     const loggedUser = localStorage.getItem('token') || '';
     return loggedUser
   }
 
   login(idToken: string) {
-
     localStorage.setItem('token', idToken);
-
-   window.location.assign('/BuyerDashboard');
+    window.location.assign('/BuyerDashboard');
   }
 
   logout() {

@@ -18,7 +18,14 @@ const Login = () => {
 
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+      setShow(false);
+      setCreateData({
+        username: '',
+        password: '',
+        confirmPassword: '',
+      })
+  }
   const handleShow = () => setShow(true);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -41,6 +48,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const data = await login(loginData);
+      localStorage.setItem('user', loginData.username )
       Auth.login(data.token);
     } catch (err) {
       console.error('Failed to login', err);
@@ -54,7 +62,7 @@ const Login = () => {
     } else if (createData.password === createData.confirmPassword) {
       try {
         const data = await createUser(createData);
-        console.log(createData)
+        localStorage.setItem('user', createData.username )
         Auth.login(data.token);
       } catch (err) {
         console.error('Failed to login', err);
@@ -63,6 +71,10 @@ const Login = () => {
       alert('Passwords doesn\'t match')
     }
   };
+
+  if (Auth.loggedIn()) {
+    window.location.assign('/BuyerDashboard');
+  }
 
   return (
     <div className='container'>
