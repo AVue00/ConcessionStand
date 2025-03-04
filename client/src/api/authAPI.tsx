@@ -31,7 +31,6 @@ const createUser = async (userInfo: UserLogin) => {
       },
       body: JSON.stringify(userInfo)
     });
-
     if(!response.ok){
       const errorData = await response.json();
       throw new Error(`Error: ${errorData.message}`);
@@ -39,6 +38,7 @@ const createUser = async (userInfo: UserLogin) => {
     const data = await response.json();
     return data
   }catch (err){
+    alert('Username taken')
     console.log('Error from create user: ', err)
     return Promise.reject('Could not fetch user data')
   }
