@@ -1,9 +1,10 @@
+// filepath: /client/src/main.tsx
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
 import App from './App.tsx';
-import Login from './pages/Login.tsx'
-import BuyerDashboard from './pages/BuyerDashboard.tsx'
+import Login from './pages/Login.tsx';
+import BuyerDashboard from './pages/BuyerDashboard.tsx';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -13,23 +14,23 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: < Login />
-      }, 
+        element: <Login />
+      },
       {
         path: '/BuyerDashboard',
-        element: < BuyerDashboard />
+        element: <BuyerDashboard />
       },
       {
         path: '/menu',
-        // element: < />  MenuPage
+        // element: <MenuPage />
       },
       {
         path: '/orders',
-        // element: < /> Orders
+        // element: <Orders />
       }
     ]
   }
-])
+]);
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
