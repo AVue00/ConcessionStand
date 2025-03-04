@@ -1,5 +1,5 @@
 import { Toast, ToastContainer } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 interface SuccessToastProps {
   show: boolean;
@@ -12,15 +12,15 @@ const SuccessToast: React.FC<SuccessToastProps> = ({ show, message, onClose }) =
     if (show) {
       const timer = setTimeout(() => {
         onClose();
-      }, 3000);
+      }, 4000);
       return () => clearTimeout(timer);
     }
   }, [show, onClose]);
 
   return (
-    <ToastContainer position="top-end" className="p-3">
-      <Toast show={show} onClose={onClose} bg="success">
-        <Toast.Header>
+    <ToastContainer position="top-center" className="p-3">
+      <Toast show={show} onClose={onClose} className="toast-success">
+        <Toast.Header className="toast-header">
           <strong className="me-auto">Success</strong>
         </Toast.Header>
         <Toast.Body>{message}</Toast.Body>
