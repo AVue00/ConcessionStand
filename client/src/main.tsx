@@ -2,6 +2,8 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App.tsx';
+import Login from './pages/Login.tsx'
+import BuyerDashboard from './pages/BuyerDashboard.tsx'
 import './index.css';
 
 const router = createBrowserRouter([
@@ -11,11 +13,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        // element: < /> Login
+        element: < Login />
       }, 
       {
-        path: '/createUser',
-        // element: < /> CreateUser
+        path: '/BuyerDashboard',
+        element: < BuyerDashboard />
       },
       {
         path: '/menu',

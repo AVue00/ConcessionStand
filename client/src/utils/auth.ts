@@ -28,7 +28,7 @@ class AuthService {
 
     localStorage.setItem('token', idToken);
 
-   // window.location.assign('/');
+   window.location.assign('/BuyerDashboard');
   }
 
   logout() {
