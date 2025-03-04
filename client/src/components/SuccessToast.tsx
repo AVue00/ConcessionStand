@@ -12,7 +12,7 @@ const SuccessToast: React.FC<SuccessToastProps> = ({ show, message, onClose }) =
     if (show) {
       const timer = setTimeout(() => {
         onClose();
-      }, 3000);
+      }, 4000);
       return () => clearTimeout(timer);
     }
   }, [show, onClose]);
