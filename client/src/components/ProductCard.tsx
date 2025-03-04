@@ -9,20 +9,24 @@ interface ProductCardProps {
     supply: number;
     img_url: string;
   };
+  onAddToCart: (product: any) => void;
+  onRemoveFromCart: (product: any) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onRemoveFromCart }) => {
   const [quantity, setQuantity] = useState(0);
 
   const handleIncrease = () => {
     if (quantity < product.supply) {
       setQuantity(quantity + 1);
+      onAddToCart(product);
     }
   };
 
   const handleDecrease = () => {
     if (quantity > 0) {
       setQuantity(quantity - 1);
+      onRemoveFromCart(product);
     }
   };
 
