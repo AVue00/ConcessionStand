@@ -4,13 +4,14 @@ import SuccessToast from '../components/SuccessToast';
 import ProductCard from '../components/ProductCard';
 import Cart from '../components/Cart';
 import Auth from '../utils/auth';
+import { Product } from '../interfaces/Products';
 import { UserLogin } from "../interfaces/UserLogin";
 
 const BuyerDashboard = () => {
   const [showToast, setShowToast] = useState(true);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [userID, setUserID] = useState(0);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<Product[]>([]);
 
   useEffect(() => {
     // Fetch products from the API
@@ -56,12 +57,12 @@ const BuyerDashboard = () => {
     fetchProducts();
   }, []);
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart = (product: Product) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id);
       if (existingItem) {
         return prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === product.id ? { ...item, quantity: item.supply + 1 } : item
         );
       } else {
         return [...prevItems, { ...product, quantity: 1 }];
@@ -69,14 +70,14 @@ const BuyerDashboard = () => {
     });
   };
 
-  const handleRemoveFromCart = (product) => {
+  const handleRemoveFromCart = (product: Product) => {
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((item) => item.id === product.id);
-      if (existingItem.quantity === 1) {
+      const existingItem = prevItems.find((item: Product) => item.id === product.id);
+      if (existingItem?.supply === 1) {
         return prevItems.filter((item) => item.id !== product.id);
       } else {
         return prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
+          item.id === product.id ? { ...item, quantity: item.supply - 1 } : item
         );
       }
     });

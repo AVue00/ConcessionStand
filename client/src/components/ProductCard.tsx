@@ -9,6 +9,7 @@ interface ProductCardProps {
     supply: number;
     img_url: string;
   };
+
   onAddToCart: (product: any) => void;
   onRemoveFromCart: (product: any) => void;
 }
