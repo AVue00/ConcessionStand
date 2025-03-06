@@ -72,9 +72,6 @@ const Login = () => {
     }
   };
 
-  if (Auth.loggedIn()) {
-    window.location.assign('/BuyerDashboard');
-  }
 
   return (
     <div className='container'>

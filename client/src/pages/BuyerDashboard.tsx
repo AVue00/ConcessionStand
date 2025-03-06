@@ -62,10 +62,10 @@ const BuyerDashboard = () => {
       const existingItem = prevItems.find((item) => item.id === product.id);
       if (existingItem) {
         return prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.supply + 1 } : item
+          item.id === product.id ? { ...item, supply: item.supply + 1 } : item
         );
       } else {
-        return [...prevItems, { ...product, quantity: 1 }];
+        return [...prevItems, { ...product, supply: 1 }];
       }
     });
   };
@@ -77,7 +77,7 @@ const BuyerDashboard = () => {
         return prevItems.filter((item) => item.id !== product.id);
       } else {
         return prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.supply - 1 } : item
+          item.id === product.id ? { ...item, supply: item.supply - 1 } : item
         );
       }
     });

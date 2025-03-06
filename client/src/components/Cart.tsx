@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Button, ListGroup, Collapse, Image } from 'react-bootstrap';
+import { Product } from '../interfaces/Products';
 
 interface CartProps {
-  cartItems: any[];
+  cartItems: Product[];
 }
 
 const Cart: React.FC<CartProps> = ({ cartItems }) => {
@@ -26,9 +27,9 @@ const Cart: React.FC<CartProps> = ({ cartItems }) => {
                 <Image src={item.img_url} rounded className="cart-item-image" />
                 <div className="flex-grow-1">
                   <div>{item.name}</div>
-                  <div>Quantity: {item.quantity}</div>
+                  <div>Quantity: {item.supply}</div>
+                  <div>${item.pricePerUnit*item.supply}</div>
                 </div>
-                <div>${item.pricePerUnit}</div>
               </ListGroup.Item>
             ))}
           </ListGroup>
