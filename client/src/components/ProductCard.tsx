@@ -17,8 +17,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onRemov
         <Card.Text>
           Price: ${product.pricePerUnit}
         </Card.Text>
-        <Button variant="primary" onClick={() => onAddToCart(product)}>Add to Cart</Button>
-        <Button variant="danger" onClick={() => onRemoveFromCart(product)} className="ml-2">Remove</Button>
+        <Button variant="primary" onClick={() => onAddToCart(product)}> + </Button>
+        <Button variant="danger" onClick={() => onRemoveFromCart(product)} className="ml-2"> - </Button>
       </Card.Body>
     </Card>
   );

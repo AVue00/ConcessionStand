@@ -92,7 +92,7 @@ const Login = () => {
           value={loginData.password || ''}
           onChange={handleChange}
         />
-        <Button type='submit' className="submit-button">Submit Form</Button>
+        <Button type='submit' className="submit-button">Login</Button>
       </form>
       <Button onClick={handleShow} className="create-user-button">Create User</Button>
       <Modal show={show} onHide={handleClose}>

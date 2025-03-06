@@ -44,7 +44,7 @@ body {
 }
 
 .form button {
-  background-color: #28a745;
+  background-color: #4faa65;
   border: none;
   padding: 10px;
   border-radius: 4px;
@@ -62,7 +62,7 @@ body {
 .logo {
   display: block;
   margin: 0 auto 20px auto;
-  border: 5px solid #8B0000; /* Dark red border */
+  border: 5px solid #8B0000; /* Dark red border on Login page logo */
   border-radius: 8px;
   background-color: #001f3f; /* Dark navy blue background */
   padding: 10px;
