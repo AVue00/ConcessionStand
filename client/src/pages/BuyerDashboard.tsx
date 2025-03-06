@@ -34,26 +34,26 @@ const BuyerDashboard = () => {
     };
 
     const findUser = async (userInfo: UserLogin) => {
-      try{
+      try {
         const response = await fetch('/auth/findUser', {
-          method:'POST',
+          method: 'POST',
           headers: {
-            'Content-Type' : 'application/json'
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(userInfo)
         });
-    
-        if(!response.ok){
+
+        if (!response.ok) {
           const errorData = await response.json();
           throw new Error(`Error: ${errorData.message}`);
         }
         const data = await response.json();
         setUserId(data);
-      }catch (err){
+      } catch (err) {
         console.error('Failed to fetch user', err);
       }
-    }
-    findUser({username: localStorage.getItem('user'),password: ''})
+    };
+    findUser({ username: localStorage.getItem('user'), password: '' });
     fetchProducts();
   }, []);
 
@@ -62,7 +62,6 @@ const BuyerDashboard = () => {
       const existingItem = prevItems.find((item) => item.id === product.id);
       if (existingItem) {
         if (existingItem.supply < product.supply) {
-          console.log(product.supply);
           return prevItems.map((item) =>
             item.id === product.id ? { ...item, supply: item.supply + 1 } : item
           );
@@ -92,20 +91,22 @@ const BuyerDashboard = () => {
   const logOut = () => {
     localStorage.removeItem('user');
     Auth.logout();
-  }
+  };
 
   return (
-    <Container className="mt-4 buyer-dashboard-container">
-      <Button onClick={logOut} className="mb-4">Log Out</Button>
+    <Container className="mt-2 buyer-dashboard-container">
       <SuccessToast show={showToast} message="Logged in successfully!" onClose={() => setShowToast(false)} />
+      <Cart cartItems={cartItems} userId={userId} products={products} />
       <Row>
         {products.map((product) => (
-          <Col key={product.id} xs={12} md={6} className="mb-4">
+          <Col key={product.id} xs={12} className="mb-4">
             <ProductCard product={product} onAddToCart={handleAddToCart} onRemoveFromCart={handleRemoveFromCart} />
           </Col>
         ))}
       </Row>
-      <Cart cartItems={cartItems} userId={userId} products={products}/>
+      <div className="logout-button-container">
+        <Button onClick={logOut} className="logout-button">Log Out</Button>
+      </div>
     </Container>
   );
 };

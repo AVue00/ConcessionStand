@@ -94,43 +94,46 @@ const Login = () => {
         />
         <Button type='submit' className="submit-button">Login</Button>
       </form>
-      <Button onClick={handleShow} className="create-user-button">Create User</Button>
+      <Button onClick={handleShow} className="create-user-button">Sign Up!</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Create User</Modal.Title>
+          <Modal.Title>Welcome to Concession Stand!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form className='form' onSubmit={handleSubmit}>
-          <h1>Login</h1>
-          <label>Username</label>
-          <input 
-            type='text'
-            name='username'
-            value={createData.username || ''}
-            onChange={handleConfirmChange}
-          />
-          <label>Password</label>
-          <input 
-            type='password'
-            name='password'
-            value={createData.password || ''}
-            onChange={handleConfirmChange}
-          />
-          <label>Confirm Password</label>
-          <input 
-            type='password'
-            name='confirmPassword'
-            value={createData.confirmPassword || ''}
-            onChange={handleConfirmChange}
-          />
+          <form className='form' onSubmit={handleConfirmSubmit}>
+            <label>Username:</label>
+            <input 
+              type='text'
+              name='username'
+              value={createData.username || ''}
+              onChange={handleConfirmChange}
+            />
+            <label>Password:</label>
+            <input 
+              type='password'
+              name='password'
+              value={createData.password || ''}
+              onChange={handleConfirmChange}
+            />
+            <label>Confirm Password:</label>
+            <input 
+              type='password'
+              name='confirmPassword'
+              value={createData.confirmPassword || ''}
+              onChange={handleConfirmChange}
+            />
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleConfirmSubmit}>
-            Create User
+          <Button 
+            variant="primary" 
+            onClick={handleConfirmSubmit}
+            disabled={createData.username === '' || createData.password === '' || createData.password !== createData.confirmPassword}
+          >
+            Get Snacking!
           </Button>
         </Modal.Footer>
       </Modal>

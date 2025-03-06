@@ -11,14 +11,19 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onRemoveFromCart }) => {
   return (
     <Card className="product-card">
-      <Card.Img variant="top" src={product.img_url} className="product-card-image" />
       <Card.Body className="product-card-body">
-        <Card.Title>{product.name}</Card.Title>
-        <Card.Text>
-          Price: ${product.pricePerUnit}
-        </Card.Text>
-        <Button variant="primary" onClick={() => onAddToCart(product)}> + </Button>
-        <Button variant="danger" onClick={() => onRemoveFromCart(product)} className="ml-2"> - </Button>
+        <div>
+          <Card.Text className="product-card-price">${product.pricePerUnit}</Card.Text>
+          <Card.Title className="product-card-title">{product.name}</Card.Title>
+        </div>
+        <Card.Img variant="top" src={product.img_url} className="product-card-image" />
+        <div className="product-card-buttons">
+          <Button variant="primary" onClick={() => onAddToCart(product)}> + </Button>
+          <Card.Text>
+            In Stock: {product.supply}
+          </Card.Text>
+          <Button variant="danger" onClick={() => onRemoveFromCart(product)} className="ml-2"> - </Button>
+        </div>
       </Card.Body>
     </Card>
   );
