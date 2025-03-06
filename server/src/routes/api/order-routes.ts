@@ -17,7 +17,6 @@ const getOrders = async (_req: Request, res: Response) => {
 const createOrders = async (req: Request, res: Response) => {
     try {
         const data = await Order.create(req.body);
-        console.log(data);
         const orderId = data.dataValues.id;
         res.status(201).json({orderId});
     }catch (err: any){
