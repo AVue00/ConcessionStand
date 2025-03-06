@@ -10,7 +10,7 @@ import { UserLogin } from "../interfaces/UserLogin";
 const BuyerDashboard = () => {
   const [showToast, setShowToast] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
-  const [userID, setUserID] = useState(0);
+  const [userId, setUserId] = useState(0);
   const [cartItems, setCartItems] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const BuyerDashboard = () => {
           throw new Error(`Error: ${errorData.message}`);
         }
         const data = await response.json();
-        setUserID(data);
+        setUserId(data);
       }catch (err){
         console.error('Failed to fetch user', err);
       }
@@ -104,7 +104,7 @@ const BuyerDashboard = () => {
           </Col>
         ))}
       </Row>
-      <Cart cartItems={cartItems} userID={userID} />
+      <Cart cartItems={cartItems} userId={userId} />
     </Container>
   );
 };

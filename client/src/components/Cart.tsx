@@ -14,7 +14,12 @@ const Cart: React.FC<CartProps> = ({ cartItems, userId }) => {
   const [open, setOpen] = useState(false);
   
   const buyNow = () => {
-    createOrder(userId);
+    if (cartItems.length === 0 ){
+      alert("Cart is Empty")
+    }else {
+      createOrder(userId);
+      window.location.assign('/BuyerDashboard');
+    }
   }
   
   return (
