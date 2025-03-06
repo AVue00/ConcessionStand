@@ -21,6 +21,9 @@ export function OrderFactory(sequelize: Sequelize): typeof Order {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 primaryKey: true
+            },
+            userId:{
+                type:DataTypes.INTEGER
             }
         },
         {   

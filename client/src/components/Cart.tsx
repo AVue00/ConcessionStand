@@ -1,15 +1,22 @@
 import { useState } from 'react';
 import { Button, ListGroup, Collapse, Image } from 'react-bootstrap';
 import { Product } from '../interfaces/Products';
-
+import { createOrder} from '../api/buyAPI'
 interface CartProps {
   cartItems: Product[];
-  userID: number;
+  userId: number;
 }
 
-const Cart: React.FC<CartProps> = ({ cartItems }) => {
-  const [open, setOpen] = useState(false);
 
+
+
+const Cart: React.FC<CartProps> = ({ cartItems, userId }) => {
+  const [open, setOpen] = useState(false);
+  
+  const buyNow = () => {
+    createOrder(userId);
+  }
+  
   return (
     <div className="cart-container">
       <Button
@@ -35,7 +42,7 @@ const Cart: React.FC<CartProps> = ({ cartItems }) => {
             ))}
           </ListGroup>
           <Button
-            onClick={() => setOpen(!open)}
+            onClick={buyNow}
           >
             Buy Now
           </Button>

@@ -13,9 +13,11 @@ const getOrders = async (_req: Request, res: Response) => {
     }
 }
 
-const createOrders = async (_req: Request, res: Response) => {
+const createOrders = async (req: Request, res: Response) => {
     try {
-        await Order.create();
+        const {userId} = req.body
+        console.log(userId);
+        await Order.create({userId});
         res.status(201).json({message: "order created"});
     }catch (err: any){
         res.status(400).json({message: err.message});
