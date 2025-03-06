@@ -62,6 +62,7 @@ const BuyerDashboard = () => {
       const existingItem = prevItems.find((item) => item.id === product.id);
       if (existingItem) {
         if (existingItem.supply < product.supply) {
+          console.log(product.supply);
           return prevItems.map((item) =>
             item.id === product.id ? { ...item, supply: item.supply + 1 } : item
           );
@@ -104,7 +105,7 @@ const BuyerDashboard = () => {
           </Col>
         ))}
       </Row>
-      <Cart cartItems={cartItems} userId={userId} />
+      <Cart cartItems={cartItems} userId={userId} products={products}/>
     </Container>
   );
 };

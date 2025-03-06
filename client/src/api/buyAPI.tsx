@@ -16,4 +16,18 @@ const createOrder = async(userId: number) => {
     }
 }
 
-export { createOrder } ;
+const updateProduct = async(product: Product) => {
+    try{
+        await fetch(`/api/products/${product.id}`,{
+            method:'PUT',
+            headers: {
+                'Content-Type' : 'application/json',
+                Authorization: `Bearer ${Auth.getToken()}`
+            },
+            body: JSON.stringify(product)
+        })
+    }catch(err){
+        console.log('error updating products', err)
+    }
+}
+export { createOrder, updateProduct } ;
