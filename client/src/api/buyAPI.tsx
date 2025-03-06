@@ -1,9 +1,11 @@
 import { Product } from '../interfaces/Products'
+import { CartItem } from '../interfaces/CartItem';
+
 import Auth from '../utils/auth';
 const createOrder = async(userId: number) => {
     const user = { userId }
     try{
-        await fetch('/api/orders/', {
+        const resp = await fetch('/api/orders/', {
            method: 'POST',
            headers: {
                 'Content-Type' : 'application/json',
@@ -11,6 +13,8 @@ const createOrder = async(userId: number) => {
             },
             body: JSON.stringify(user)
         });
+        const data = await resp.json();
+        return data
     }catch(err){
         console.log("error making order:" , err)
     }
@@ -30,4 +34,19 @@ const updateProduct = async(product: Product) => {
         console.log('error updating products', err)
     }
 }
-export { createOrder, updateProduct } ;
+
+const setupOrder = async(cartItem: CartItem) => {
+    try{
+        await fetch('api/orders/join', {
+            method:'POST',
+            headers: {
+                'Content-Type' : 'application/json',
+                Authorization: `Bearer ${Auth.getToken()}`
+            },
+            body: JSON.stringify(cartItem)
+        })
+    }catch(err){
+        console.log('error setting cart items', err)
+    }
+}
+export { createOrder, updateProduct, setupOrder } ;
