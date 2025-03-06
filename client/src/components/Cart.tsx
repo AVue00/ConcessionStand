@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Button, ListGroup, Collapse, Image } from 'react-bootstrap';
 import { Product } from '../interfaces/Products';
-import { createOrder} from '../api/buyAPI'
+import { createOrder, updateProduct} from '../api/buyAPI'
 interface CartProps {
+  products: Product[];
   cartItems: Product[];
   userId: number;
 }
@@ -10,7 +11,7 @@ interface CartProps {
 
 
 
-const Cart: React.FC<CartProps> = ({ cartItems, userId }) => {
+const Cart: React.FC<CartProps> = ({ cartItems, userId, products }) => {
   const [open, setOpen] = useState(false);
   
   const buyNow = () => {
@@ -18,6 +19,14 @@ const Cart: React.FC<CartProps> = ({ cartItems, userId }) => {
       alert("Cart is Empty")
     }else {
       createOrder(userId);
+      for(const product of products){
+        for(const cartItem of cartItems){
+          if(product.id === cartItem.id){
+           product.supply -= cartItem.supply
+           updateProduct(product);
+          }
+        }
+      }
       window.location.assign('/BuyerDashboard');
     }
   }
