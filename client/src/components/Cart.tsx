@@ -4,6 +4,7 @@ import { Product } from '../interfaces/Products';
 
 interface CartProps {
   cartItems: Product[];
+  userID: number;
 }
 
 const Cart: React.FC<CartProps> = ({ cartItems }) => {
@@ -33,6 +34,11 @@ const Cart: React.FC<CartProps> = ({ cartItems }) => {
               </ListGroup.Item>
             ))}
           </ListGroup>
+          <Button
+            onClick={() => setOpen(!open)}
+          >
+            Buy Now
+          </Button>
         </div>
       </Collapse>
     </div>

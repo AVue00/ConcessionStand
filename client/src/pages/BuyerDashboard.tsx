@@ -99,7 +99,7 @@ const BuyerDashboard = () => {
           </Col>
         ))}
       </Row>
-      <Cart cartItems={cartItems} />
+      <Cart cartItems={cartItems} userID={userID} />
     </Container>
   );
 };
