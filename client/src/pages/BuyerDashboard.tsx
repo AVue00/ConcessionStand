@@ -87,14 +87,14 @@ const BuyerDashboard = () => {
     localStorage.removeItem('user');
     Auth.logout();
   }
+
   return (
-  
-    <Container className="mt-4">
-      <Button onClick={logOut}>Log Out</Button>
+    <Container className="mt-4 buyer-dashboard-container">
+      <Button onClick={logOut} className="mb-4">Log Out</Button>
       <SuccessToast show={showToast} message="Logged in successfully!" onClose={() => setShowToast(false)} />
       <Row>
         {products.map((product) => (
-          <Col key={product.id} xs={12} md={6} lg={4} className="mb-4">
+          <Col key={product.id} xs={12} md={6} className="mb-4">
             <ProductCard product={product} onAddToCart={handleAddToCart} onRemoveFromCart={handleRemoveFromCart} />
           </Col>
         ))}

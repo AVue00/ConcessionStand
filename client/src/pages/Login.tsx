@@ -2,7 +2,8 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Auth from '../utils/auth';
-import { login, createUser } from "../api/authAPI";
+import { login, createUser } from "../api/authAPI"; // Corrected quotation marks
+import ConcessionStandLogo from '../assets/ConcessionStandLogo.jpg';
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -72,28 +73,28 @@ const Login = () => {
     }
   };
 
-
   return (
     <div className='container'>
+      <img src={ConcessionStandLogo} alt="Concession Stand Logo" className="logo" />
       <form className='form' onSubmit={handleSubmit}>
         <h1>Login</h1>
-        <label >Username</label>
+        <label>Username</label>
         <input 
           type='text'
           name='username'
           value={loginData.username || ''}
           onChange={handleChange}
         />
-      <label>Password</label>
+        <label>Password</label>
         <input 
           type='password'
           name='password'
           value={loginData.password || ''}
           onChange={handleChange}
         />
-        <Button type='submit'>Submit Form</Button>
+        <Button type='submit' className="submit-button">Submit Form</Button>
       </form>
-      <Button onClick={handleShow}>Create User</Button>
+      <Button onClick={handleShow} className="create-user-button">Create User</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Create User</Modal.Title>
@@ -101,14 +102,14 @@ const Login = () => {
         <Modal.Body>
           <form className='form' onSubmit={handleSubmit}>
           <h1>Login</h1>
-          <label >Username</label>
+          <label>Username</label>
           <input 
             type='text'
             name='username'
             value={createData.username || ''}
             onChange={handleConfirmChange}
           />
-        <label>Password</label>
+          <label>Password</label>
           <input 
             type='password'
             name='password'
@@ -134,7 +135,6 @@ const Login = () => {
         </Modal.Footer>
       </Modal>
     </div>
-    
   )
 };
 

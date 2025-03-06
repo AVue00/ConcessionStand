@@ -1,47 +1,24 @@
+import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-import { useState } from 'react';
+import { Product } from '../interfaces/Products';
 
 interface ProductCardProps {
-  product: {
-    id: number;
-    name: string;
-    pricePerUnit: number;
-    supply: number;
-    img_url: string;
-  };
-
-  onAddToCart: (product: any) => void;
-  onRemoveFromCart: (product: any) => void;
+  product: Product;
+  onAddToCart: (product: Product) => void;
+  onRemoveFromCart: (product: Product) => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onRemoveFromCart }) => {
-  const [quantity, setQuantity] = useState(0);
-
-  const handleIncrease = () => {
-    if (quantity < product.supply) {
-      setQuantity(quantity + 1);
-      onAddToCart(product);
-    }
-  };
-
-  const handleDecrease = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-      onRemoveFromCart(product);
-    }
-  };
-
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={product.img_url} alt={product.name} />
+    <Card className="product-card">
+      <Card.Img variant="top" src={product.img_url} className="product-card-image" /> {/* Use the new CSS class */}
       <Card.Body>
         <Card.Title>{product.name}</Card.Title>
-        <Card.Text>Price: ${product.pricePerUnit}</Card.Text>
-        <div className="d-flex justify-content-between align-items-center">
-          <Button variant="danger" onClick={handleDecrease}>-</Button>
-          <span>{quantity}</span>
-          <Button variant="success" onClick={handleIncrease}>+</Button>
-        </div>
+        <Card.Text>
+          Price: ${product.pricePerUnit}
+        </Card.Text>
+        <Button variant="primary" onClick={() => onAddToCart(product)}>Add to Cart</Button>
+        <Button variant="danger" onClick={() => onRemoveFromCart(product)} className="ml-2">Remove</Button>
       </Card.Body>
     </Card>
   );
