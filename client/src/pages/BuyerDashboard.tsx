@@ -10,7 +10,7 @@ import { UserLogin } from "../interfaces/UserLogin";
 const BuyerDashboard = () => {
   const [showToast, setShowToast] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
-  const [userId, setUserId] = useState(0);
+  const [userID, setUserID] = useState(0);
   const [cartItems, setCartItems] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const BuyerDashboard = () => {
           throw new Error(`Error: ${errorData.message}`);
         }
         const data = await response.json();
-        setUserId(data);
+        setUserID(data);
       }catch (err){
         console.error('Failed to fetch user', err);
       }
@@ -61,9 +61,14 @@ const BuyerDashboard = () => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id);
       if (existingItem) {
-        return prevItems.map((item) =>
-          item.id === product.id ? { ...item, supply: item.supply + 1 } : item
-        );
+        if (existingItem.supply < product.supply) {
+          return prevItems.map((item) =>
+            item.id === product.id ? { ...item, supply: item.supply + 1 } : item
+          );
+        } else {
+          alert('Cannot add more items than available in stock');
+          return prevItems;
+        }
       } else {
         return [...prevItems, { ...product, supply: 1 }];
       }
@@ -99,7 +104,7 @@ const BuyerDashboard = () => {
           </Col>
         ))}
       </Row>
-      <Cart cartItems={cartItems} userId={userId} />
+      <Cart cartItems={cartItems} userID={userID} />
     </Container>
   );
 };

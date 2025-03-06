@@ -11,8 +11,8 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onRemoveFromCart }) => {
   return (
     <Card className="product-card">
-      <Card.Img variant="top" src={product.img_url} className="product-card-image" /> {/* Use the new CSS class */}
-      <Card.Body>
+      <Card.Img variant="top" src={product.img_url} className="product-card-image" />
+      <Card.Body className="product-card-body">
         <Card.Title>{product.name}</Card.Title>
         <Card.Text>
           Price: ${product.pricePerUnit}
