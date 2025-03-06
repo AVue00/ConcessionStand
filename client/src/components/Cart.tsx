@@ -28,8 +28,8 @@ const Cart: React.FC<CartProps> = ({ cartItems, userId, products }) => {
       for (const cartItem of cartItems) {
         setupOrder({
           quantity: cartItem.supply,
-          product_id: cartItem.id,
-          order_id: order.orderId,
+          productId: cartItem.id,
+          orderId: order.orderId,
         })
       }
       //window.location.assign('/BuyerDashboard');
