@@ -6,6 +6,7 @@ import { CartItem } from '../../interfaces/CartItem.js'
 
 const router = Router();
 
+
 const getOrders = async (req: Request, res: Response) => {
     try {
         const {userId} = req.body
@@ -13,11 +14,16 @@ const getOrders = async (req: Request, res: Response) => {
             where: {userId},
             include: Product,
         });
-        // const data = orders?.map(order => {
-        //     //@ts-ignore
-        //     return order.Products
-        // })
-        res.json(orders);
+        const send = orders.map(order => {
+        
+            //@ts-ignore
+            delete order.dataValues.userId
+            //@ts-ignore
+            delete order.dataValues.UserId
+            console.log(order)
+            return order
+        })
+        res.json(send);
     } catch (err:any){
         res.status(500).json({message: err.message})
     }
