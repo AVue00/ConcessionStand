@@ -1,6 +1,8 @@
 import { Router, Request, Response  } from 'express';
 import { Order } from '../../models/order.js'
+import { Product } from '../../models/product.js';
 import { CartItem } from '../../interfaces/CartItem.js'
+
 
 const router = Router();
 
@@ -8,9 +10,15 @@ const getOrders = async (req: Request, res: Response) => {
     try {
         const {userId} = req.body
         const orders = await Order.findAll({
-            where: {userId}
+            where: {userId},
+            include: Product,
         });
-        res.json(orders);
+        const data = orders?.map(order => {
+            //@ts-ignore
+            return order.Products
+        })
+        
+        res.json(data);
     } catch (err:any){
         res.status(500).json({message: err.message})
     }
