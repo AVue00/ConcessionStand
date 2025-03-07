@@ -7,7 +7,7 @@ import {
   } from 'sequelize';
 
   export class OrderProducts extends Model<InferAttributes<OrderProducts>,InferCreationAttributes<OrderProducts>>{
-    declare quantity: number;
+    declare quantity: number
   }
 
   export function OrderProductsFactory(sequelize: Sequelize): typeof OrderProducts {

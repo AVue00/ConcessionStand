@@ -14,6 +14,7 @@ const sequelize = process.env.DB_URL
       dialectOptions: {
         decimalNumbers: true,
       },
+      logQueryParameters:true
     });
 
 const User = UserFactory(sequelize);
