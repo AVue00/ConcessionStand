@@ -13,12 +13,13 @@ const OrderHistory = () => {
       const fetchOrders = async () => {
         try {
           const response = await fetch(
-            '/api/orders/',
+            '/api/orders/buyUser',
             {
               headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${Auth.getToken()}`
-              }
+              },
+              body: JSON.stringify({userId})
             }
           );
           const data = await response.json();
