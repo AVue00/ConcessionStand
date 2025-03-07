@@ -2,8 +2,8 @@ import { Product } from '../interfaces/Products'
 import { CartItem } from '../interfaces/CartItem';
 
 import Auth from '../utils/auth';
-const createOrder = async(userId: number) => {
-    const user = { userId }
+const createOrder = async(userId: number, cartItems: CartItem[]) => {
+    const user = { userId, cartItems }
     try{
         const resp = await fetch('/api/orders/', {
            method: 'POST',
@@ -35,18 +35,4 @@ const updateProduct = async(product: Product) => {
     }
 }
 
-const setupOrder = async(cartItem: CartItem) => {
-    try{
-        await fetch('api/orders/join', {
-            method:'POST',
-            headers: {
-                'Content-Type' : 'application/json',
-                Authorization: `Bearer ${Auth.getToken()}`
-            },
-            body: JSON.stringify(cartItem)
-        })
-    }catch(err){
-        console.log('error setting cart items', err)
-    }
-}
-export { createOrder, updateProduct, setupOrder } ;
+export { createOrder, updateProduct } ;

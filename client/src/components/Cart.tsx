@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Button, ListGroup, Collapse, Image } from 'react-bootstrap';
 import { Product } from '../interfaces/Products';
-import { createOrder, updateProduct, setupOrder } from '../api/buyAPI';
+import { CartItem } from '../interfaces/CartItem'
+import { createOrder, updateProduct } from '../api/buyAPI';
 
 interface CartProps {
   products: Product[];
@@ -16,7 +17,13 @@ const Cart: React.FC<CartProps> = ({ cartItems, userId, products }) => {
     if (cartItems.length === 0) {
       alert("Cart is Empty");
     } else {
-      const order = await createOrder(userId);
+      const sendItems: CartItem[] = cartItems.map(item => {
+        return{
+          quantity: item.supply,
+          productId: item.id
+        }
+      })
+      await createOrder(userId, sendItems);
       for (const product of products) {
         for (const cartItem of cartItems) {
           if (product.id === cartItem.id) {
@@ -25,14 +32,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, userId, products }) => {
           }
         }
       }
-      for (const cartItem of cartItems) {
-        setupOrder({
-          quantity: cartItem.supply,
-          productId: cartItem.id,
-          orderId: order.orderId,
-        })
-      }
-      //window.location.assign('/BuyerDashboard');
+      window.location.assign('/BuyerDashboard');
     }
   };
 
