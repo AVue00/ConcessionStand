@@ -93,10 +93,10 @@ const BuyerDashboard = () => {
         await updateProduct({ ...item, supply: item.supply - item.quantity });
       }
 
-      const order = await createOrder(userId);
-      for (const item of cartItems) {
-        await setupOrder({ quantity: item.quantity, productId: item.id, orderId: order.id });
-      }
+      // const order = await createOrder(userId);
+      // for (const item of cartItems) {
+      //   await setupOrder({ quantity: item.quantity, productId: item.id, orderId: order.id });
+      // }
 
       setCartItems([]);
       alert('Order placed successfully!');

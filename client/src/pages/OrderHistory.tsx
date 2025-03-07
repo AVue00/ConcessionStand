@@ -7,14 +7,14 @@ import { UserLogin } from "../interfaces/UserLogin";
 
 const OrderHistory = () => {
     const [orders, setOrders] = useState<number[]>([]);
-    const [userId, setUserId] = useState(0);
 
     useEffect(() => {
-      const fetchOrders = async () => {
+      const fetchOrders = async (userId: number) => {
         try {
           const response = await fetch(
-            '/api/orders/buyUser',
+            '/api/orders/byUser',
             {
+              method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${Auth.getToken()}`
@@ -24,6 +24,7 @@ const OrderHistory = () => {
           );
           const data = await response.json();
           setOrders(data);
+          console.log(data)
         } catch (err) {
           console.error('Failed to fetch products', err);
         }
@@ -44,13 +45,13 @@ const OrderHistory = () => {
             throw new Error(`Error: ${errorData.message}`);
           }
           const data = await response.json();
-          setUserId(data);
+          console.log('User data:', data);
+          fetchOrders(data);
         } catch (err) {
           console.error('Failed to fetch user', err);
         }
       };
       findUser({ username: localStorage.getItem('user'), password: '' });
-      fetchOrders();
     }, []);
 
     return(
@@ -59,7 +60,7 @@ const OrderHistory = () => {
       <Container>
           <Row>
           {orders.map((order) => (
-            <Col key={order} xs={12} className="mb-4 no-margin-bottom">
+            <Col key={order.id} xs={12} className="mb-4 no-margin-bottom">
               <OrderCard order={order} />
             </Col>
           ))}
