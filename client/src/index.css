@@ -14,6 +14,79 @@ body {
   padding-top: 0px;
 }
 
+/* Navbar styling */
+.navbar {
+  background-color: #f8f9fa !important;
+  padding: 10px 20px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  margin-right: 20px;
+  font-size: 1rem;
+}
+
+.navbar-nav .nav-link:last-child {
+  margin-right: 0;
+}
+
+/* Cart dropdown styling */
+.cart-dropdown .dropdown-menu {
+  width: 300px;
+  padding: 10px;
+}
+
+.cart-dropdown .cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-dropdown .cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-dropdown .cart-item-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.cart-dropdown .cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-dropdown .cart-item-details p {
+  margin: 0;
+}
+
+.cart-dropdown .cart-item-actions {
+  display: flex;
+  align-items: center;
+}
+
+.cart-dropdown .cart-item-actions button {
+  margin: 0 5px;
+}
+
+.cart-dropdown .cart-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.cart-dropdown .checkout-button {
+  text-align: center;
+  padding: 10px 0;
+}
+
 /* Form styling */
 .form {
   background-color: #cccccc;
@@ -90,12 +163,6 @@ body {
   margin: 0 auto; /* Center the button */
 }
 
-/* Cart item image styling */
-.cart-item-image {
-  width: 30px;
-  height: 30px;
-}
-
 /* Product card styling */
 .product-card {
   display: flex;
@@ -155,37 +222,6 @@ body {
   margin-left: 5px;
 }
 
-/* Cart container styling */
-.cart-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  max-width: 600px; /* Match the width of the product cards */
-  margin: 10px auto;
-  z-index: 1000;
-}
-
-.cart-toggle-button {
-  width: 100%;
-  text-align: center;
-  background-color: #4faa65;
-  border: none;
-  color: #ffffff;
-  padding: 10px;
-  border-radius: 0;
-  cursor: pointer;
-}
-
-.cart-content {
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 0;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
-}
-
 /* Log out button styling */
 .logout-button-container {
   position: fixed;
@@ -207,21 +243,6 @@ body {
 
 /* Media Queries */
 @media (max-width: 1240px) {
-  .cart-container {
-    position: static;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .cart-toggle-button {
-    text-align: center;
-  }
-
-  .cart-content {
-    margin-top: 0;
-    margin-bottom: 10px;
-  }
-
   .logout-button-container {
     position: static;
     width: 100%;
@@ -260,16 +281,6 @@ body {
     max-height: 4rem;
   }
 
-  .cart-container {
-    position: static;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .cart-toggle-button {
-    text-align: center;
-  }
-
   .logout-button-container {
     position: static;
     width: 100%;
@@ -285,25 +296,3 @@ body {
 .no-margin-bottom {
   margin-bottom: 0 !important;
 }
-
-/* Banner styling */
-/* .banner-left, .banner-right {
-  width: 25%;
-  height: 45%;
-  display: block;
-  position: fixed;
-  top: 0;
-  background-size: auto;
-  background-repeat: repeat-y;
-  z-index: -1;
-}
-
-.banner-left {
-  left: 0;
-  background-image: url('../assets/ConcessionStandBanner.jpg');
-}
-
-.banner-right {
-  right: 0;
-  background-image: url('../assets/ConcessionStandBanner.jpg');
-} */
