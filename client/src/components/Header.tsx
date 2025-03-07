@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ logOut, cartItems, handleAddToCart, han
   const navigate = useNavigate();
 
   const handleViewOrderHistory = () => {
-    navigate('/pages/OrderHistory');
+    navigate('OrderHistory');
   };
 
   return (
