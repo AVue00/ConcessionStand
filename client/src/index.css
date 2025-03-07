@@ -280,3 +280,30 @@ body {
     text-align: center;
   }
 }
+
+/* Custom class to remove margin-bottom */
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+/* Banner styling */
+/* .banner-left, .banner-right {
+  width: 25%;
+  height: 45%;
+  display: block;
+  position: fixed;
+  top: 0;
+  background-size: auto;
+  background-repeat: repeat-y;
+  z-index: -1;
+}
+
+.banner-left {
+  left: 0;
+  background-image: url('../assets/ConcessionStandBanner.jpg');
+}
+
+.banner-right {
+  right: 0;
+  background-image: url('../assets/ConcessionStandBanner.jpg');
+} */

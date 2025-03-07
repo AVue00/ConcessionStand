@@ -6,6 +6,7 @@ import Cart from '../components/Cart';
 import Auth from '../utils/auth';
 import { Product } from '../interfaces/Products';
 import { UserLogin } from "../interfaces/UserLogin";
+import ConcessionStandBanner from '../assets/ConcessionStandBanner.jpg'; // Import the banner image
 
 const BuyerDashboard = () => {
   const [showToast, setShowToast] = useState(true);
@@ -99,7 +100,7 @@ const BuyerDashboard = () => {
       <Cart cartItems={cartItems} userId={userId} products={products} />
       <Row>
         {products.map((product) => (
-          <Col key={product.id} xs={12} className="mb-4">
+          <Col key={product.id} xs={12} className="mb-4 no-margin-bottom">
             <ProductCard product={product} onAddToCart={handleAddToCart} onRemoveFromCart={handleRemoveFromCart} />
           </Col>
         ))}
