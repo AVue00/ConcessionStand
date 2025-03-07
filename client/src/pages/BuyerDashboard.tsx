@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Auth from '../utils/auth';
 import { Product } from '../interfaces/Products';
 import { UserLogin } from '../interfaces/UserLogin';
+import { CartItem } from '../interfaces/CartItem';
 import { createOrder, updateProduct } from '../api/buyAPI';
 
 const BuyerDashboard = () => {
@@ -14,23 +15,23 @@ const BuyerDashboard = () => {
   const [userId, setUserId] = useState(0);
   const [cartItems, setCartItems] = useState<Product[]>([]);
 
-  useEffect(() => {
-    // Fetch products from the API
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('/api/products/', {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${Auth.getToken()}`,
-          },
-        });
-        const data = await response.json();
-        setProducts(data);
-      } catch (err) {
-        console.error('Failed to fetch products', err);
-      }
-    };
+  // Fetch products from the API
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('/api/products/', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${Auth.getToken()}`,
+        },
+      });
+      const data = await response.json();
+      setProducts(data);
+    } catch (err) {
+      console.error('Failed to fetch products', err);
+    }
+  };
 
+  useEffect(() => {
     const findUser = async (userInfo: UserLogin) => {
       try {
         const response = await fetch('/auth/findUser', {
@@ -88,17 +89,25 @@ const BuyerDashboard = () => {
 
   const handleCheckout = async () => {
     try {
-
-      for (const item of cartItems) {
-        await updateProduct({ ...item, supply: item.supply - item.quantity });
+      for (const product of products){
+        for (const item of cartItems) {
+          if(product.id === item.id) {
+            product.supply -= item.supply;
+            await updateProduct(product)
+          }
+        }
       }
-
-      // const order = await createOrder(userId);
-      // for (const item of cartItems) {
-      //   await setupOrder({ quantity: item.quantity, productId: item.id, orderId: order.id });
-      // }
+      const sendItems: CartItem[] = cartItems.map(item => {
+        return{
+          quantity: item.supply,
+          productId: item.id
+        }
+      })
+      await createOrder(userId, sendItems);
 
       setCartItems([]);
+      await fetchProducts();
+
       alert('Order placed successfully!');
     } catch (err) {
       console.error('Failed to place order', err);

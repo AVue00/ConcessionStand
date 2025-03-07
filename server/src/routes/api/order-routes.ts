@@ -13,12 +13,11 @@ const getOrders = async (req: Request, res: Response) => {
             where: {userId},
             include: Product,
         });
-        const data = orders?.map(order => {
-            //@ts-ignore
-            return order.Products
-        })
-        
-        res.json(data);
+        // const data = orders?.map(order => {
+        //     //@ts-ignore
+        //     return order.Products
+        // })
+        res.json(orders);
     } catch (err:any){
         res.status(500).json({message: err.message})
     }
