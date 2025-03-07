@@ -4,11 +4,13 @@ import { CartItem } from '../../interfaces/CartItem.js'
 
 const router = Router();
 
-const getOrders = async (_req: Request, res: Response) => {
+const getOrders = async (req: Request, res: Response) => {
     try {
-        const products = await Order.findAll({
+        const {userId} = req.body
+        const orders = await Order.findAll({
+            where: {userId}
         });
-        res.json(products);
+        res.json(orders);
     } catch (err:any){
         res.status(500).json({message: err.message})
     }
@@ -33,7 +35,7 @@ const createOrders = async (req: Request, res: Response) => {
 };
 
 
-router.get('/',getOrders);
+router.post('/byUser',getOrders);
 
 router.post('/',createOrders);
 
