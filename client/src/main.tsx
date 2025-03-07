@@ -5,6 +5,7 @@ import App from './App.tsx';
 import Login from './pages/Login.tsx';
 import BuyerDashboard from './pages/BuyerDashboard.tsx';
 import './index.css';
+import OrderHistory from './pages/OrderHistory.tsx';
 
 const router = createBrowserRouter([
   {
@@ -20,12 +21,8 @@ const router = createBrowserRouter([
         element: <BuyerDashboard />
       },
       {
-        path: '/menu',
-        // element: <MenuPage />
-      },
-      {
-        path: '/orders',
-        // element: <Orders />
+        path: '/OrderHistory',
+        element: <OrderHistory />
       }
     ]
   }
