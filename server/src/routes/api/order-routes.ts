@@ -20,7 +20,6 @@ const getOrders = async (req: Request, res: Response) => {
             delete order.dataValues.userId
             //@ts-ignore
             delete order.dataValues.UserId
-            console.log(order)
             return order
         })
         res.json(send);

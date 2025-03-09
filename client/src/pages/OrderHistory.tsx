@@ -3,10 +3,10 @@ import OrderCard from '../components/OrderCard';
 import Auth from '../utils/auth';
 import { useState, useEffect } from 'react';
 import { UserLogin } from "../interfaces/UserLogin";
-
+import Order from '../interfaces/Order';
 
 const OrderHistory = () => {
-    const [orders, setOrders] = useState<number[]>([]);
+    const [orders, setOrders] = useState<Order[]>([]);
 
     useEffect(() => {
       const fetchOrders = async (userId: number) => {
