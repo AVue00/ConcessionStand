@@ -296,3 +296,15 @@ body {
 .no-margin-bottom {
   margin-bottom: 0 !important;
 }
+
+.create-user-button {
+  width: 100%;
+  max-width: 350px; /* Match the width of the logo */
+  margin-top: 10px;
+  margin: 10px auto;
+}
+
+.navbar-logout-button {
+  margin-left: auto;
+  margin-right: 10px;
+}

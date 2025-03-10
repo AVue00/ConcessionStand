@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ logOut, cartItems, handleAddToCart, han
       <Navbar.Brand href="#">Concession Stand</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
+        <Nav className="me-auto">
           <NavDropdown title="View Cart" id="basic-nav-dropdown">
             <CartDropdown
               cartItems={cartItems}
@@ -34,6 +34,8 @@ const Header: React.FC<HeaderProps> = ({ logOut, cartItems, handleAddToCart, han
             />
           </NavDropdown>
           <Nav.Link onClick={handleViewOrderHistory}>View Order History</Nav.Link>
+        </Nav>
+        <Nav className="ms-auto">
           <Nav.Link onClick={logOut}>Log Out</Nav.Link>
         </Nav>
       </Navbar.Collapse>
