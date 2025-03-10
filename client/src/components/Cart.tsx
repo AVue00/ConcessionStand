@@ -39,14 +39,14 @@ const Cart: React.FC<CartProps> = ({ cartItems, handleAddToCart, handleRemoveFro
                         <i className="fas fa-minus"></i>
                       </button>
 
-                      <input id="form1" min="0" name="quantity" value={item.quantity} type="number" className="form-control form-control-sm" readOnly />
+                      <input id="form1" min="0" name="quantity" value={item.supply} type="number" className="form-control form-control-sm" readOnly />
 
                       <button className="btn btn-link px-2" onClick={() => handleAddToCart(item)}>
                         <i className="fas fa-plus"></i>
                       </button>
                     </div>
                     <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                      <h5 className="mb-0">${item.price}</h5>
+                      <h5 className="mb-0">${item.pricePerUnit}</h5>
                     </div>
                     <div className="col-md-1 col-lg-1 col-xl-1 text-end">
                       <a href="#!" className="text-danger" onClick={() => handleRemoveFromCart(item)}><i className="fas fa-trash fa-lg"></i></a>

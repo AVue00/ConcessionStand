@@ -10,7 +10,7 @@ interface CartDropdownProps {
 }
 
 const CartDropdown: React.FC<CartDropdownProps> = ({ cartItems, handleAddToCart, handleRemoveFromCart, handleCheckout }) => {
-  const totalPrice = cartItems.reduce((total, item) => total + (item.pricePerUnit || 0) * (item.quantity || 0), 0);
+  const totalPrice = cartItems.reduce((total, item) => total + (item.pricePerUnit || 0) * (item.supply || 0), 0);
 
   return (
     <Dropdown.Menu className="cart-dropdown">
@@ -23,10 +23,10 @@ const CartDropdown: React.FC<CartDropdownProps> = ({ cartItems, handleAddToCart,
               <p className="mb-0">Price: ${item.pricePerUnit?.toFixed(2)}</p>
               <div className="d-flex align-items-center cart-item-actions">
                 <Button variant="link" onClick={() => handleRemoveFromCart(item)}>-</Button>
-                <span>{item.quantity}</span>
+                <span>{item.supply}</span>
                 <Button variant="link" onClick={() => handleAddToCart(item)}>+</Button>
               </div>
-              <p className="mb-0">Total: ${(item.pricePerUnit * item.quantity).toFixed(2)}</p>
+              <p className="mb-0">Total: ${(item.pricePerUnit * item.supply).toFixed(2)}</p>
             </div>
           </Dropdown.Item>
         ))
