@@ -222,6 +222,15 @@ body {
   margin-left: 5px;
 }
 
+/* Order Card Styling */
+.order-card-title {
+  border-bottom: 2px solid #8B0000
+}
+
+.order-card-total {
+  border-top: 2px dashed #8B0000
+}
+
 /* Log out button styling */
 .logout-button-container {
   position: fixed;
