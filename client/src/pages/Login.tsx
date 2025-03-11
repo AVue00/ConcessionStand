@@ -71,7 +71,7 @@ const Login = () => {
         console.error('Failed to login', err);
       }
     } else {
-      alert('Passwords doesn\'t match')
+      alert('Passwords don\'t match')
     }
   };
 
