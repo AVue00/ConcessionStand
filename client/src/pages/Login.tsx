@@ -2,7 +2,7 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Auth from '../utils/auth';
-import { login, createUser } from "../api/authAPI"; // Corrected quotation marks
+import { login, createUser } from "../api/authAPI";
 import ConcessionStandLogo from '../assets/ConcessionStandLogo.jpg';
 
 const Login = () => {
@@ -50,7 +50,7 @@ const Login = () => {
     try {
       const data = await login(loginData);
       localStorage.setItem('user', loginData.username);
-      localStorage.setItem('userId', data.userId); // Store userId in localStorage
+      localStorage.setItem('userId', data.userId);
       Auth.login(data.token);
     } catch (err) {
       console.error('Failed to login', err);
@@ -65,7 +65,7 @@ const Login = () => {
       try {
         const data = await createUser(createData);
         localStorage.setItem('user', createData.username);
-        localStorage.setItem('userId', data.userId); // Store userId in localStorage
+        localStorage.setItem('userId', data.userId);
         Auth.login(data.token);
       } catch (err) {
         console.error('Failed to login', err);

@@ -18,11 +18,8 @@ const SuccessToast: React.FC<SuccessToastProps> = ({ show, message, onClose }) =
   }, [show, onClose]);
 
   return (
-    <ToastContainer position="top-center" className="p-3">
+    <ToastContainer className="toast-container">
       <Toast show={show} onClose={onClose} className="toast-success">
-        <Toast.Header className="toast-header">
-          <strong className="me-auto">Welcome!</strong>
-        </Toast.Header>
         <Toast.Body>{message}</Toast.Body>
       </Toast>
     </ToastContainer>

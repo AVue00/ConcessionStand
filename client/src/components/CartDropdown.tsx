@@ -2,7 +2,6 @@ import React from 'react';
 import { Dropdown, Button, Image } from 'react-bootstrap';
 import { Product } from '../interfaces/Products';
 
-
 interface CartDropdownProps {
   cartItems: Product[];
   handleRemoveFromCart: (product: Product) => void;
@@ -23,7 +22,6 @@ const CartDropdown: React.FC<CartDropdownProps> = ({ cartItems, handleRemoveFrom
         throw new Error('User not logged in');
       }
 
-      
       // Check if the cart is empty
       if (cartItems.length === 0) {
         alert('Cannot checkout. Your cart is empty.');
@@ -48,7 +46,6 @@ const CartDropdown: React.FC<CartDropdownProps> = ({ cartItems, handleRemoveFrom
 
       alert(`Your order will be ready for pickup at ${formattedPickupTime}!`);
       
-
     } catch (err) {
       console.error('Failed to place order', err);
       alert('Failed to place order');
@@ -71,7 +68,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({ cartItems, handleRemoveFrom
               <p className="mb-0">Quantity: {item.quantity}</p>
               <p className="mb-0">Total: ${(item.pricePerUnit * (item.quantity || 0)).toFixed(2)}</p>
             </div>
-            <Button variant="danger" onClick={(e) => { e.stopPropagation(); handleRemoveAllFromCart(item); }} className="remove-from-cart-button">Remove from cart</Button>
+            <Button variant="danger" onClick={(e) => { e.stopPropagation(); handleRemoveAllFromCart(item); }} className="remove-from-cart-button">X</Button>
           </Dropdown.Item>
         ))
       ) : (

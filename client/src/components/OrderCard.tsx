@@ -12,17 +12,18 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
         total += product.pricePerUnit * product.OrderProducts.quantity;
     });
     return (
-        <Card className="product-card">
+        <Card className="order-card">
             <Card.Body>
-                <Card.Title className="order-card-title">Order: {order.id}</Card.Title>
+                <Card.Title className="order-card-title">Order ID: {order.id}</Card.Title>
                 <Card.Text>
                     {order.Products.map((product) => (
-                        <div>
-                            <pre>{product.name}: Quantity: {product.OrderProducts.quantity}  Price: ${product.pricePerUnit*product.OrderProducts.quantity}
-                            </pre>
+                        <div key={product.id} className="order-card-content">
+                            <p className="product-name">{product.name}</p>
+                            <p>Quantity: {product.OrderProducts.quantity}</p>
+                            <p>Price: ${product.pricePerUnit * product.OrderProducts.quantity}</p>
                         </div>
                     ))}
-                    <p className="order-card-total">Total: ${total}</p>
+                    <p className="order-card-total">Order Total: ${total}</p>
                 </Card.Text>
             </Card.Body>
         </Card>
