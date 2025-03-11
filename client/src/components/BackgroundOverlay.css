@@ -4,7 +4,7 @@
     left: 50px;
     right: 50px;
     bottom: 50px;
-    background-color: #132243; /* Adjust the color as needed */
-    z-index: -1; /* Ensure it is below other components */
-    pointer-events: none; /* Ensure it does not block interactions */
+    background-color: #132243;
+    z-index: -1;
+    pointer-events: none;
   }
