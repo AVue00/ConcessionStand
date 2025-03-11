@@ -19,7 +19,7 @@ const OrderHistoryHeader: React.FC<OrderHistoryHeaderProps> = ({ logOut }) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ms-auto">
-          <Button variant="primary" onClick={handleDashboardClick} className="return-to-dashboard-button mr-2">Return to Dashboard</Button>
+          <Button variant="primary" onClick={handleDashboardClick} className="return-to-dashboard-button mr-2">Back to Shop</Button>
           <Button variant="danger" onClick={logOut} className="order-history-logout-button">Log Out</Button>
         </Nav>
       </Navbar.Collapse>
