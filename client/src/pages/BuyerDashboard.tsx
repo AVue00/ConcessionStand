@@ -56,35 +56,21 @@ const BuyerDashboard = () => {
     fetchProducts();
   }, []);
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (product: Product, quantity: number) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id);
       if (existingItem) {
-        if (existingItem.supply < product.supply) {
-          return prevItems.map((item) =>
-            item.id === product.id ? { ...item, supply: item.supply + 1 } : item
-          );
-        } else {
-          alert('Cannot add more items than available in stock');
-          return prevItems;
-        }
+        return prevItems.map((item) =>
+          item.id === product.id ? { ...item, quantity: (item.quantity || 0) + quantity } : item
+        );
       } else {
-        return [...prevItems, { ...product, supply: 1 }];
+        return [...prevItems, { ...product, quantity }];
       }
     });
   };
 
   const handleRemoveFromCart = (product: Product) => {
-    setCartItems((prevItems) => {
-      const existingItem = prevItems.find((item: Product) => item.id === product.id);
-      if (existingItem?.supply === 1) {
-        return prevItems.filter((item) => item.id !== product.id);
-      } else {
-        return prevItems.map((item) =>
-          item.id === product.id ? { ...item, supply: item.supply - 1 } : item
-        );
-      }
-    });
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== product.id));
   };
 
   const handleCheckout = async () => {
@@ -92,14 +78,14 @@ const BuyerDashboard = () => {
       for (const product of products){
         for (const item of cartItems) {
           if(product.id === item.id) {
-            product.supply -= item.supply;
+            product.supply -= item.quantity || 0;
             await updateProduct(product)
           }
         }
       }
       const sendItems: CartItem[] = cartItems.map(item => {
         return{
-          quantity: item.supply,
+          quantity: item.quantity || 0,
           productId: item.id
         }
       })
@@ -128,7 +114,7 @@ const BuyerDashboard = () => {
         <Row>
           {products.map((product) => (
             <Col key={product.id} xs={12} className="mb-4 no-margin-bottom">
-              <ProductCard product={product} onAddToCart={handleAddToCart} onRemoveFromCart={handleRemoveFromCart} />
+              <ProductCard product={product} onAddToCart={handleAddToCart} />
             </Col>
           ))}
         </Row>

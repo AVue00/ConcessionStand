@@ -35,8 +35,8 @@ body {
 }
 
 /* Cart dropdown styling */
-.cart-dropdown .dropdown-menu {
-  width: 300px;
+.cart-dropdown {
+  width: 350px; /* Adjust the width as needed */
   padding: 10px;
 }
 
@@ -66,15 +66,6 @@ body {
   margin: 0;
 }
 
-.cart-dropdown .cart-item-actions {
-  display: flex;
-  align-items: center;
-}
-
-.cart-dropdown .cart-item-actions button {
-  margin: 0 5px;
-}
-
 .cart-dropdown .cart-total {
   display: flex;
   justify-content: space-between;
@@ -86,6 +77,8 @@ body {
   text-align: center;
   padding: 10px 0;
 }
+
+
 
 /* Form styling */
 .form {
@@ -166,60 +159,72 @@ body {
 /* Product card styling */
 .product-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background-color: #f8f8f8;
   border: 5px solid #8B0000;
   border-radius: 8px;
-  padding: 2px;
-  margin-bottom: 0px; /* Space between rows */
-  width: 100%;
-  max-width: 600px; /* Fixed width */
+  padding: 20px;
   margin: 10px auto; /* Center the card */
-}
-
-/* Product card image styling */
-.product-card-image {
   width: 100%;
-  height: auto;
-  max-width: 12rem;
-  max-height: 12rem;
-  object-fit: cover;
-  margin-left: 10px; /* Move image to the right side */
+  max-width: 300px; /* Fixed width */
 }
 
-/* Product card body styling */
 .product-card-body {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-/* Product card title styling */
-.product-card-title {
-  flex: 1;
-  text-align: left;
-  margin-right: 10px;
-}
-
-/* Product card price styling */
-.product-card-price {
-  font-size: 1.5rem; /* Increase font size */
+.product-info {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Add some space between the info and the image */
 }
 
-/* Product card buttons container styling */
+.product-card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.product-card-price {
+  font-size: 1.3rem;
+  color: #555;
+}
+
+.product-card-image {
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  margin-bottom: 20px; /* Add space below the image */
+}
+
 .product-card-buttons {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 10px; /* Increase spacing between buttons and text */
+  margin-bottom: 20px; /* Add space below the buttons */
 }
 
-/* Product card buttons styling */
 .product-card-buttons button {
-  margin-left: 5px;
+  width: 40px;
+}
+
+.in-stock-text {
+  text-align: center;
+  margin-bottom: 20px; /* Add space between the text and the button */
+}
+
+.add-to-cart-button {
+  text-align: center;
+  white-space: pre-line; /* Ensure line breaks are respected */
+  margin-top: 20px; /* Increase space above the button */
+  margin-bottom: 20px; /* Increase space below the button */
 }
 
 /* Log out button styling */
@@ -299,7 +304,7 @@ body {
 
 .create-user-button {
   width: 100%;
-  max-width: 350px; /* Match the width of the logo */
+  max-width: 350px;
   margin-top: 10px;
   margin: 10px auto;
 }
@@ -307,4 +312,43 @@ body {
 .navbar-logout-button {
   margin-left: auto;
   margin-right: 10px;
+}
+
+.product-card-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px; /* Add space below the buttons */
+}
+
+.product-card-buttons button {
+  width: 40px;
+}
+
+.add-to-cart-button {
+  text-align: center;
+  white-space: pre-line; /* Ensure line breaks are respected */
+  margin-top: 20px; /* Increase space above the button */
+  margin-bottom: 20px; /* Increase space below the button */
+}
+
+.in-stock-text {
+  text-align: center;
+  margin-bottom: 20px; /* Add space between the text and the button */
+}
+
+.product-info {
+  text-align: center;
+  margin-bottom: 10px; /* Add some space between the info and the image */
+}
+
+.product-card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.product-card-price {
+  font-size: 1.3rem;
+  color: #555;
 }

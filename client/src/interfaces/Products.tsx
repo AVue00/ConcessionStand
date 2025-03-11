@@ -4,4 +4,5 @@ export interface Product {
     pricePerUnit: number;
     supply: number;
     img_url: string;
+    quantity?: number;
 }

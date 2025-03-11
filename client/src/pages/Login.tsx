@@ -49,7 +49,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const data = await login(loginData);
-      localStorage.setItem('user', loginData.username )
+      localStorage.setItem('user', loginData.username);
+      localStorage.setItem('userId', data.userId); // Store userId in localStorage
       Auth.login(data.token);
     } catch (err) {
       console.error('Failed to login', err);
@@ -63,7 +64,8 @@ const Login = () => {
     } else if (createData.password === createData.confirmPassword) {
       try {
         const data = await createUser(createData);
-        localStorage.setItem('user', createData.username )
+        localStorage.setItem('user', createData.username);
+        localStorage.setItem('userId', data.userId); // Store userId in localStorage
         Auth.login(data.token);
       } catch (err) {
         console.error('Failed to login', err);
