@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown, Button, Image } from 'react-bootstrap';
 import { Product } from '../interfaces/Products';
-import { createOrder, updateProduct } from '../api/buyAPI';
+
 
 interface CartDropdownProps {
   cartItems: Product[];
@@ -23,17 +23,20 @@ const CartDropdown: React.FC<CartDropdownProps> = ({ cartItems, handleRemoveFrom
         throw new Error('User not logged in');
       }
 
-      // Update product supply
-      for (const item of cartItems) {
-        await updateProduct({ ...item, supply: item.supply - (item.quantity || 0) });
+      
+      // Check if the cart is empty
+      if (cartItems.length === 0) {
+        alert('Cannot checkout. Your cart is empty.');
+        return;
       }
 
-      // Create order
-      const orderItems = cartItems.map(item => ({
-        productId: item.id,
-        quantity: item.quantity || 0,
-      }));
-      await createOrder(Number(userId), orderItems);
+      // Validate cart items against product supply
+      for (const item of cartItems) {
+        if ((item.quantity || 0) > item.supply) {
+          alert(`Cannot checkout. The quantity of ${item.name} exceeds the available supply.`);
+          return;
+        }
+      }
 
       // Clear cart items
       handleCheckout();
@@ -45,8 +48,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({ cartItems, handleRemoveFrom
 
       alert(`Your order will be ready for pickup at ${formattedPickupTime}!`);
       
-      // Clear cart on page refresh
-      window.location.reload();
+
     } catch (err) {
       console.error('Failed to place order', err);
       alert('Failed to place order');

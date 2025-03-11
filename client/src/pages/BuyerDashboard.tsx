@@ -94,7 +94,6 @@ const BuyerDashboard = () => {
       setCartItems([]);
       await fetchProducts();
 
-      alert('Order placed successfully!');
     } catch (err) {
       console.error('Failed to place order', err);
       alert('Failed to place order');
