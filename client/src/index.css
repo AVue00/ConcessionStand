@@ -396,6 +396,9 @@ body {
     max-width: 500px;
     min-width: 300px;
   }
+  .order-history-logout-button {
+    margin-left: 10px;
+  }
 }
 
 /* Custom class to remove margin-bottom */
