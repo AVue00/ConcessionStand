@@ -24,7 +24,6 @@ const OrderHistory = () => {
           );
           const data = await response.json();
           setOrders(data);
-          console.log(data)
         } catch (err) {
           console.error('Failed to fetch products', err);
         }
@@ -45,7 +44,6 @@ const OrderHistory = () => {
             throw new Error(`Error: ${errorData.message}`);
           }
           const data = await response.json();
-          console.log('User data:', data);
           fetchOrders(data);
         } catch (err) {
           console.error('Failed to fetch user', err);

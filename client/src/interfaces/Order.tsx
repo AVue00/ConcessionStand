@@ -13,7 +13,7 @@ interface Product {
 
 interface Order {
     id: number;
-    products: Product[];
+    Products: Product[];
 }
 
 export default Order;
