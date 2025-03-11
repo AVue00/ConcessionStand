@@ -3,6 +3,8 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import CartDropdown from './CartDropdown';
 import { Product } from '../interfaces/Products';
+import ConcessionStandIcon from '../assets/ConcessionStandIcon.jpg';
+import './Header.css';
 
 interface HeaderProps {
   logOut: () => void;
@@ -19,11 +21,14 @@ const Header: React.FC<HeaderProps> = ({ logOut, cartItems, handleRemoveFromCart
   };
 
   return (
-    <Navbar bg="light" expand="lg" className="mb-4">
-      <Navbar.Brand href="#">Concession Stand</Navbar.Brand>
+    <Navbar bg="dark" variant="dark" expand="lg" className="mb-4 custom-navbar">
+      <Navbar.Brand href="#" className="d-flex align-items-center">
+        <img src={ConcessionStandIcon} alt="Concession Stand Icon" className="custom-navbar-icon" />
+        <span className="custom-navbar-brand">Concession Stand</span>
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
+        <Nav className="ms-auto">
           <NavDropdown title="View Cart" id="basic-nav-dropdown">
             <CartDropdown
               cartItems={cartItems}
@@ -31,10 +36,8 @@ const Header: React.FC<HeaderProps> = ({ logOut, cartItems, handleRemoveFromCart
               handleCheckout={handleCheckout}
             />
           </NavDropdown>
-          <Nav.Link onClick={handleViewOrderHistory}>View Order History</Nav.Link>
-        </Nav>
-        <Nav className="ms-auto">
-          <Nav.Link onClick={logOut}>Log Out</Nav.Link>
+          <Nav.Link onClick={handleViewOrderHistory} className="custom-nav-link">View Order History</Nav.Link>
+          <Nav.Link onClick={logOut} className="custom-nav-link">Log Out</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

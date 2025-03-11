@@ -1,33 +1,57 @@
 /* General body styling */
 body {
-  background-color: #001f3f;
-  font-family: 'Arial', sans-serif;
+  background: linear-gradient(#4a4a4a 50%, #b8b8b8 50%) !important;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  padding: 10px 0;
+  padding-top: 10px 0;
+  margin-bottom: 20px;
 }
 
 /* Container styling */
 .container {
-  max-width: 1200px;
+  max-width: 3480px;
   width: 100%;
   text-align: center;
   padding-top: 0px;
+  background-color: #29303f !important;
+  background-image: url('/src/assets/ConcessionStandIcon.jpg') !important;
+  background-repeat: repeat !important;
+  background-position: center !important;
+  background-size: auto !important;
+  position: relative;
+  z-index: 0;
+}
+
+/* Background overlay styling */
+.background-overlay {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  right: 50px;
+  bottom: 50px;
+  background-color: #132243;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Navbar styling */
 .navbar {
   background-color: #f8f9fa !important;
-  padding: 10px 20px;
+  padding: 30px 20px;
 }
 
 .navbar-brand {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .navbar-nav .nav-link {
   margin-right: 20px;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-style: bolder;
+  color: #ffffff;
+  padding-bottom: 15px;
 }
 
 .navbar-nav .nav-link:last-child {
@@ -90,6 +114,36 @@ body {
   font-weight: bold;
 }
 
+/* Media Queries */
+@media (max-width: 576px) {
+  .product-card-image {
+    max-width: 10rem;
+    max-height: 10rem;
+    min-height: 10rem;
+  }
+
+  .logout-button-container {
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .logout-button {
+    text-align: center;
+  }
+
+  .cart-dropdown {
+    max-width: 100%;
+  }
+
+  .dropdown-menu.show {
+    width: 100% !important; /* Increase the width of the cart component */
+    max-width: none; /* Remove the max-width restriction */
+    left: 0 !important; /* Align the dropdown to the left */
+    right: 0 !important; /* Align the dropdown to the right */
+  }
+}
+
 /* Form styling */
 .form {
   background-color: #cccccc;
@@ -141,16 +195,16 @@ body {
   background-color: #218838;
 }
 
-/* Logo styling */
+/* Login Page Logo styling */
 .logo {
   display: block;
   margin: 0 auto 20px auto;
-  border: 5px solid #8B0000;
+  border: 5px solid #7d2a2a;
   border-radius: 8px;
-  background-color: #001f3f;
+  background-color: #19324a;
   padding: 10px;
   width: 100%;
-  max-width: 260px;
+  max-width: 350px;
 }
 
 /* Create user button styling */
@@ -158,7 +212,8 @@ body {
   width: 100%;
   max-width: 350px;
   margin-top: 10px;
-  margin: 0 auto;
+  margin-top: 10;
+  margin-bottom: 13%;
 }
 
 /* Product card styling */
@@ -168,12 +223,12 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: #f8f8f8;
-  border: 5px solid #8B0000;
-  border-radius: 8px;
-  padding: 20px;
+  border: 5px solid #989898;
+  border-radius: 15px;
+  padding: 8px;
   margin: 10px auto;
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
 }
 
 .product-card-body {
@@ -190,22 +245,30 @@ body {
 }
 
 .product-card-title {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+  color: rgb(41, 57, 84) !important;
 }
 
 .product-card-price {
-  font-size: 1.3rem;
-  color: #555;
+  font-size: 1.4rem;
+  color: rgb(41, 57, 84) !important;
+  font-weight: bold;
 }
 
 .product-card-image {
   width: 100%;
   height: auto;
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 250px;
+  max-height: 250px;
   object-fit: cover;
   margin-bottom: 20px;
+  border: 5px solid #3d4863;
+  border-radius: 15px;
+  margin: 20px;
+  padding: 10px;
+  min-height: 250px;
 }
 
 .product-card-buttons {
@@ -222,7 +285,9 @@ body {
 
 .in-stock-text {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
+  color: rgb(41, 57, 84);
+  font-weight: bold;
 }
 
 .add-to-cart-button {
@@ -255,19 +320,26 @@ body {
 .order-card {
   background-color: #f8f8f8;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .order-card-title {
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 20px;
+  color: rgb(41, 57, 84);
+  text-decoration: underline;
+  text-decoration-color: rgb(47, 53, 66);
 }
 
 .order-card-content {
   margin-bottom: 15px;
+  color: rgb(41, 57, 84);
 }
 
 .order-card-content p {
@@ -289,15 +361,23 @@ body {
 
 /* Order history header styling */
 .order-history-header {
-  background-color: #f8f8f8;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  padding: 3px;
+  margin-bottom: 10px;
+  min-height: 60px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .order-history-header h1 {
-  color: #000;
-  margin: 0;
+  color: #3e466a;
+  margin: 0px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:#f3f3f3 ;
+  border-radius: 20px;
+  padding: 8px;
 }
 
 /* Header container styling */
@@ -310,10 +390,12 @@ body {
 
 /* Log out button styling for OrderHistory page */
 .order-history-logout-button {
-  background-color: #c9c9c9;
-  color: #000;
+  background-color: #e1e1e1;
+  color: #19324a;
   border: 1px solid #c9c9c9;
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 12px;
+  font-weight: bold;
 }
 
 .order-history-logout-button:hover {
@@ -323,6 +405,8 @@ body {
 /* Return to Dashboard button styling for OrderHistory page */
 .return-to-dashboard-button {
   margin-top: 15px;
+  font-weight: bold;
+  color: #19324a;
 }
 
 /* Success toast styling */
@@ -355,29 +439,49 @@ body {
 
 @media (max-width: 1200px) {
   .product-card-image {
-    max-width: 11rem;
-    max-height: 11rem;
+    max-width: 16rem;
+    max-height: 16rem;
+    min-height: 16rem;
+  }
+
+  .navbar-nav .nav-link {
+    margin-right: 20px;
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 992px) {
   .product-card-image {
-    max-width: 10rem;
-    max-height: 10rem;
+    max-width: 15rem;
+    max-height: 15rem;
+    min-height: 15rem;
+  }
+  .container {
+    background-image: url('/src/assets/ConcessionStandIcon.jpg') !important;
+  }
+  .navbar-nav .nav-link {
+    margin-right: 20px;
+    font-size: 1.0rem;
   }
 }
 
 @media (max-width: 768px) {
   .product-card-image {
-    max-width: 9rem;
-    max-height: 9rem;
+    max-width: 14rem;
+    max-height: 14rem;
+    min-height: 14rem;
   }
 }
 
 @media (max-width: 576px) {
+  .container {
+    background-image: url('/src/assets/ConcessionStandIcon.jpg') !important;
+  }
+
   .product-card-image {
-    max-width: 8rem;
-    max-height: 8rem;
+    max-width: 13rem;
+    max-height: 13rem;
+    min-height: 13rem;
   }
 
   .logout-button-container {
@@ -402,6 +506,16 @@ body {
   }
   .order-history-logout-button {
     margin-left: 10px;
+  }
+}
+
+@media (max-width: 445px) {
+  .order-history-header h1 {
+    font-size: 1.3rem;
+  }
+  .order-card-title {
+    font-weight: bold;
+    font-size: 1.1rem;
   }
 }
 

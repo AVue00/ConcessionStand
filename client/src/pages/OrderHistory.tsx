@@ -64,7 +64,7 @@ const OrderHistory = () => {
     <Container className="mt-2">
       <OrderHistoryHeader logOut={logOut} />
       <div className="order-history-header">
-        <h1>Order History</h1>
+        <h1>Past Orders</h1>
       </div>
       <Container>
         <Row>

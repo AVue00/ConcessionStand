@@ -105,14 +105,24 @@ const BuyerDashboard = () => {
     Auth.logout();
   };
 
+  // Sort products by name, with "(20 oz.)" products at the bottom
+  const sortedProducts = [...products].sort((a, b) => {
+    const isA20oz = a.name.includes('(20 oz.)');
+    const isB20oz = b.name.includes('(20 oz.)');
+
+    if (isA20oz && !isB20oz) return 1;
+    if (!isA20oz && isB20oz) return -1;
+    return a.name.localeCompare(b.name);
+  });
+
   return (
     <Container className="mt-2 buyer-dashboard-container">
       <SuccessToast show={showToast} message="Logged in successfully!" onClose={() => setShowToast(false)} />
       <Header logOut={logOut} cartItems={cartItems} handleRemoveFromCart={handleRemoveFromCart} handleCheckout={handleCheckout} />
       <div className="product-cards-container">
         <Row>
-          {products.map((product) => (
-            <Col key={product.id} xs={12} className="mb-4 no-margin-bottom">
+          {sortedProducts.map((product) => (
+            <Col key={product.id} xs={12} md={6} className="mb-4 no-margin-bottom">
               <ProductCard product={product} onAddToCart={handleAddToCart} />
             </Col>
           ))}
