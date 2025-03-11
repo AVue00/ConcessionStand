@@ -63,7 +63,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({ cartItems, handleRemoveFrom
           <Dropdown.Item key={index} className="d-flex align-items-center cart-item">
             <Image src={item.img_url} rounded className="cart-item-image" />
             <div className="cart-item-details">
-              <p className="mb-0">{item.name}</p>
+              <p className="product-name mb-0">{item.name}</p>
               <p className="mb-0">Price: ${item.pricePerUnit?.toFixed(2)}</p>
               <p className="mb-0">Quantity: {item.quantity}</p>
               <p className="mb-0">Total: ${(item.pricePerUnit * (item.quantity || 0)).toFixed(2)}</p>

@@ -86,6 +86,10 @@ body {
   padding: 10px 0;
 }
 
+.cart-dropdown .product-name {
+  font-weight: bold;
+}
+
 /* Form styling */
 .form {
   background-color: #cccccc;
