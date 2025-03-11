@@ -109,7 +109,7 @@ const BuyerDashboard = () => {
   return (
     <Container className="mt-2 buyer-dashboard-container">
       <SuccessToast show={showToast} message="Logged in successfully!" onClose={() => setShowToast(false)} />
-      <Header logOut={logOut} cartItems={cartItems} handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart} handleCheckout={handleCheckout} />
+      <Header logOut={logOut} cartItems={cartItems} handleRemoveFromCart={handleRemoveFromCart} handleCheckout={handleCheckout} />
       <div className="product-cards-container">
         <Row>
           {products.map((product) => (

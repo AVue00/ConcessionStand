@@ -7,12 +7,11 @@ import { Product } from '../interfaces/Products';
 interface HeaderProps {
   logOut: () => void;
   cartItems: Product[];
-  handleAddToCart: (product: Product) => void;
   handleRemoveFromCart: (product: Product) => void;
   handleCheckout: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ logOut, cartItems, handleAddToCart, handleRemoveFromCart, handleCheckout }) => {
+const Header: React.FC<HeaderProps> = ({ logOut, cartItems, handleRemoveFromCart, handleCheckout }) => {
   const navigate = useNavigate();
 
   const handleViewOrderHistory = () => {
@@ -28,7 +27,6 @@ const Header: React.FC<HeaderProps> = ({ logOut, cartItems, handleAddToCart, han
           <NavDropdown title="View Cart" id="basic-nav-dropdown">
             <CartDropdown
               cartItems={cartItems}
-              handleAddToCart={handleAddToCart}
               handleRemoveFromCart={handleRemoveFromCart}
               handleCheckout={handleCheckout}
             />

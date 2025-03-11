@@ -2,16 +2,14 @@ import React from 'react';
 import { Dropdown, Button, Image } from 'react-bootstrap';
 import { Product } from '../interfaces/Products';
 import { createOrder, updateProduct } from '../api/buyAPI';
-import Auth from '../utils/auth';
 
 interface CartDropdownProps {
   cartItems: Product[];
-  handleAddToCart: (product: Product) => void;
   handleRemoveFromCart: (product: Product) => void;
   handleCheckout: () => void;
 }
 
-const CartDropdown: React.FC<CartDropdownProps> = ({ cartItems, handleAddToCart, handleRemoveFromCart, handleCheckout }) => {
+const CartDropdown: React.FC<CartDropdownProps> = ({ cartItems, handleRemoveFromCart, handleCheckout }) => {
   const totalPrice = cartItems.reduce((total, item) => {
     const price = item.pricePerUnit || 0;
     const quantity = item.quantity || 0;
