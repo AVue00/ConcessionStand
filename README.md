@@ -13,19 +13,33 @@ This project is a concession stand ordering app. It features a login page when f
 
 ## Installation
 
-Webpage can be seen at the deployed website:
+Webpage can be seen at the deployed website: https://theconcessionstand.onrender.com/
 <br>
 If testing locally, first run 'npm i' to install dependencies then run a 'npm run start:dev' command to launch application.
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+![Login](assets/Login.PNG)
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+When the page is loaded, user is directed to the login page. If the user has a created account, they can enter their username and password. If not, the user can sign up for an account with the "Sign Up!" button.
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![CreateUser](assets/CreateUser.PNG)
+
+When creating a user, a new username and password are entered. Password must be confirmed to complete registration process.
+
+![Menu](assets/Menu.PNG)
+
+Once the user has logged in, the page is redirected to the menu page which includes various products for sale by the concession stand with available stock. User can select quantity of products and add to cart for order.
+
+![Cart](assets/Cart.PNG)
+
+The user can view the cart from top dropdown menu. User can see the total price of all products selected to cart along with quantity and price of each individual product. Products can be completely removed from cart before checkout as well. Checkout button registers order to the concession stand.
+
+![OrderHistory](assets/OrderHistory.PNG)
+
+The user can view their orders and past orders in the Order History page.
+
+
 
 ## Credits
 
